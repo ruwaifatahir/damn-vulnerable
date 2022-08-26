@@ -14,6 +14,10 @@ Attacker's only goal is to break the contract. I broke it by sending `DVT` Token
 
 When I sent `DVT` Token directly to pool contract. Its variable named `poolBalance` doesn't gets update. If someone tries to call `flashLoan()`, transaction will be reverted on line no: `47` because `balanceBefore` will not be equal to balance of this contract.
 
+```java
+assert(poolBalance == balanceBefore);
+```
+
 <br>
 
 **How to duplicate behaviour ?**
@@ -26,7 +30,7 @@ When I sent `DVT` Token directly to pool contract. Its variable named `poolBalan
 git clone https://github.com/ruwaifatahir/damn-vulnerable
 ```
 
-- Go to the project folder
+- Go to the project directory
 
 ```
 cd damn-vulnerable/Unstopable
