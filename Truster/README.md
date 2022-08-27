@@ -10,13 +10,7 @@ But don't worry, you might be able to take them all from the pool. In a single t
 
 **Solution:**
 
-Attacker's goal is to drain funds from receiver contract. I drained by calling `flashLoan()` **10** times.
-
-<br>
-
-```javascript
-function flashLoan(address borrower, uint256borrowAmount)
-```
+Attacker's goal is to drain funds from receiver contract his account. I drained it by calling approve function from `flashLoan()` and passed its address owner and mine spender.
 
 <br>
 
@@ -24,9 +18,7 @@ function flashLoan(address borrower, uint256borrowAmount)
 
 <br>
 
-We can pass any address to `flasLoan()`'s parameter named `borrower`. This means anyone execute `flashLoan()` on behalf of receiver. I called the `flashLoan()` **_ten_** times. It took me **_10_** transactions to do it.
-
-To acheive this in one transaction I created a contract which calls the `flashLoan()` **_ten_** times and passes the receiver contract address to it.
+We can pass any address and any function signature to `flasLoan()`. It'll call it for us. So I sent DVT contract address as target and approve function selecter. I got the allowance, Now I can transfer all the allowance from pool contract to my account.
 
 <br>
 
@@ -43,7 +35,7 @@ git clone https://github.com/ruwaifatahir/damn-vulnerable
 - Go to the project directory
 
 ```
-cd damn-vulnerable/NaiveReceiver
+cd damn-vulnerable/Truster
 ```
 
 - _Install the dependencies_
