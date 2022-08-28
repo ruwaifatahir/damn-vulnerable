@@ -1,13 +1,57 @@
-# Sample Hardhat Project
+## Challenge #4 - Side entrance
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+<br>
 
-Try running some of the following tasks:
+**Task:** A surprisingly simple lending pool allows anyone to deposit ETH, and withdraw it at any point in time.
 
-```shell
-npx hardhat help
+This very simple lending pool has 1000 ETH in balance already, and is offering free flash loans using the deposited ETH to promote their system.
+
+You must take all ETH from the lending pool.
+
+**Solution:**
+
+Attacker's goal is to drain funds from pool contract. I drained by taking flash loan and returning back but while returning I made the record of these funds in pool contract as mine.
+
+<br>
+
+```javascript
+function flashLoan(address borrower, uint256borrowAmount)
+```
+
+<br>
+
+**_How ?_**
+
+<br>
+
+We can implement `execute()` as we want. So I deposited back the borrow amount to the pool contract while taking loan using `deposit()` and took all the funds from contract.
+
+<br>
+
+**How to duplicate behaviour ?**
+
+<br>
+
+- _Clone this repository_
+
+```bash
+git clone https://github.com/ruwaifatahir/damn-vulnerable
+```
+
+- Go to the project directory
+
+```
+cd damn-vulnerable/SideEntrance
+```
+
+- _Install the dependencies_
+
+```
+npm install
+```
+
+- _Run Tests_
+
+```
 npx hardhat test
-GAS_REPORT=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.ts
 ```
