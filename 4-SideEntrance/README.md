@@ -14,10 +14,6 @@ Attacker's goal is to drain funds from pool contract. I drained by taking flash 
 
 <br>
 
-```javascript
-function flashLoan(address borrower, uint256borrowAmount)
-```
-
 <br>
 
 **_How ?_**
